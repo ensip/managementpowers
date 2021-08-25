@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html class="ie lte-ie9 lte-ie8 lte-ie7 ie6" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie lte-ie9 lte-ie8 lte-ie7 ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie lte-ie9 lte-ie8 ie8" lang="en-US">
+<![endif]-->
+<!--[if IE 9]>
+<html class="ie lte-ie9 ie9" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let i;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",i=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")&&this._isValidScriptType(i)?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}_isValidScriptType(e){return!e||""===e||"string"==typeof e&&["text/javascript","text/x-javascript","text/ecmascript","text/jscript","application/javascript","application/x-javascript","application/ecmascript","application/jscript","module"].includes(e.toLowerCase())}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){const n=e[t];Object.defineProperty(e,t,{get:n||function(){},set:n=>{e["rocket"+t]=n}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const o=document.createDocumentFragment();i.setStart(o,0),o.appendChild(i.createContextualFragment(t)),r.insertBefore(o,a)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","touchcancel","touchforcechange","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
+</script>
+	<meta charset="UTF-8" />
+
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+
+	<meta name="author" content="[empresa]" />
+
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&#038;display=swap" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="./js/html5.js" ></script>
+<![endif]-->
+
+	<link rel="icon" sizes="228x228" href="./img/favicon/coast-icon-228x228.png">
+
+	<meta name='robots' content='max-image-preview:large' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v15.5 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>CRM by [empresa]: a comprehensive range of complementary solutions</title>
+	<link rel="stylesheet" href="./css/7856cf781c26a3160a06f572a12a2da1.css" media="all" data-minify="1" />
+	<meta name="description" content="A CRM solution for each business sector. Thanks to our range of specialised versions, you will find the CRM solution adapted to your needs." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+
+<script type='text/javascript' src='./js/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='./js/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<link rel="canonical" href="https://www.[empresa].com/crm.html" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><!-- Google Tag Manager -->
+<style>
+button:not(.read-more) {
+    background-color: #4ca928;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 0.8em;
+    font-family: 'Qanelas Soft Bold',Helvetica,Arial,serif;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 0.15rem;
+    cursor: pointer;
+}
+.site ul {
+    padding: 0!important;
+    margin: 0!important;
+    list-style: none!important;
+    margin: 1rem 0 1rem 2rem!important;
+}
+
+</style>
+</head>
+<body class="page-template page-template-templates page-template-page-contact page-template-templatespage-contact-php page page-id-8709 page-parent en">
+	
+	
+<section class="header-hero">
+	<div class="ribbon">
+
+				<header id="header-main" role="banner">
+			<div class="header-wrapper">
+				<div class="header-inner">
+					<div id="branding">
+						<strong>
+								<a href="crm.html" title="[empresa]" rel="home">
+									[empresa] - 								</a>
+						</strong>
+					</div>
+					<div class="trigger-menu">
+					
+						<button class="burger-menu" role="widget">
+							<span>Open-Close the menu</span>
+						</button>
+					</div>
+					<div class="phone-menu-mobile-wrapper">
+					<nav id="access" role="navigation">
+							<div class="menu-main-en-container"><ul id="menu-main-en" class="menu">
+							<li id="menu-item-8921" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8921"><a href="./departments.html">Roles &#038; Industries</a></li>
+							<li id="menu-item-8923" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8589 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-8923"><a href="./crm.html" aria-current="page">Price</a></li>
+							<li id="menu-item-40016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40016"><a href="./features.html">Features</a></li>
+							<li id="menu-item-18250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-18250"><a href="./about-us.html">About us</a></li>
+							<li id="menu-item-25374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25374"><a href="./resources.html">Resources</a></li>
+							<li id="menu-item-40011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40011"><a href="./contact.html">Contact</a></li>
+						</ul></div>			
+					</nav><!-- #access -->
+					<a href="#" class="btn"><span>TRY IT FREE</span></a>
+
+						<div class="search-form-wrapper fade">
+	<div class="close">X</div>
+	<div class="content-search">
+		<p>What are you looking for?</p>
+		<form role="search" method="get" class="search-form" action="./">
+			<label class="screen-reader-text">Search for:</label>
+			<input type="search" class="search-field" placeholder="Search ..." value="" name="s" title="Search for:" />
+			<div class="wrapper-search-submit">
+				<input type="submit" class="search-submit" value="Search" />
+			</div>
+		</form>
+		<div>
+					</div>
+	</div>
+</div>
+					</div>
+				</div>
+				<div class="breadcrump">
+					<a href="./crm.html">Home</a>  <span>Our range of CRM solutions</span>				
+				</div>
+					</div>
+	</header><!-- #header-main -->
+</div>
+
+		<div class="hero">
+															<div class="txt">
+								<h1>Contact</h1>
+									<div class="intro">
+																					<p style="font-size: 18px;">Don&#8217;t get lost at sea!</p>
+<p style="font-size: 18px;">[empresa]’s lighthouse is there to help you find your way.</p>
+																			</div>
+								</div>
+								<div class="img">
+																																																																	<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 600 287.5" style="enable-background:new 0 0 600 287.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;fill:#8FD3CE;enable-background:new    ;}
+	.st1{opacity:0.1;}
+	.st2{clip-path:url(#SVGID_2_);}
+	.st3{fill:#3A7066;}
+	.st4{fill:#F0F2E7;}
+	.st5{fill:#F9FBF0;}
+	.st6{fill:#D94B3D;}
+	.st7{fill:#54535C;}
+	.st8{fill:#B4B7AC;}
+	.st9{fill:#A1A593;}
+	.st10{fill:#939686;}
+	.st11{fill:#4C4B53;}
+	.st12{fill:#45444D;}
+	.st13{fill:#B0B4A3;}
+	.st14{clip-path:url(#SVGID_4_);}
+	.st15{fill:#9FE7E7;}
+	.st16{fill:#88DCDC;}
+	.st17{fill:#CA4436;}
+	.st18{fill:#CF8A44;}
+	.st19{fill:#B56920;}
+	.st20{fill:#E9ECDE;}
+	.st21{fill:#E0E3D3;}
+</style>
+<path class="st0" d="M571,224.3l-75.5-27.7c-41.8-11.6-86-21.2-127.7-9.1l-8.4,2.4c-44,12.7-90.7,12.2-134.5-1.3
+	c-41.7-12.9-86.2-13.9-128.4-2.9l-31.8,8.2c-25.3,6.6-44.7,27-50,52.6h576.9C588.7,236.2,581,228,571,224.3z"/>
+<g class="st1">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="302.1" y="141" width="274.9" height="137.2"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st2">
+			<path class="st3" d="M400.5,209.6L400.5,209.6c0-8.3-6.7-15-15-15l0,0H374c-14.8-0.3-26.6-12.5-26.3-27.3
+				c0.3-14.4,11.9-26,26.3-26.3h176.2c14.8-0.3,27,11.5,27.3,26.3c0.3,14.8-11.5,27-26.3,27.3c-0.3,0-0.7,0-1,0h-67.4
+				c-8.3,0-15,6.7-15,15s6.7,15,15,15h22.3c14.8-0.3,27,11.5,27.3,26.3c0.3,14.8-11.5,27-26.3,27.3c-0.3,0-0.7,0-1,0H328.9
+				c-14.8,0.3-27-11.5-27.3-26.3s11.5-27,26.3-27.3c0.3,0,0.7,0,1,0h56.6C393.8,224.6,400.5,217.9,400.5,209.6L400.5,209.6"/>
+		</g>
+	</g>
+</g>
+<rect x="399" y="30.4" class="st4" width="36" height="21.9"/>
+<polygon class="st5" points="458.1,241.7 376,241.7 390.7,54.6 443.4,54.6 "/>
+<polygon class="st6" points="445.1,76.6 443.4,54.6 390.7,54.6 389,76.6 "/>
+<polygon class="st6" points="450,138.5 447.3,103.9 386.8,103.9 384.1,138.5 "/>
+<polygon class="st6" points="456.7,223.9 452.9,176.2 381.1,176.2 377.4,223.9 "/>
+<rect x="411.5" y="30.4" class="st7" width="11.1" height="21.9"/>
+<rect x="425.1" y="209.5" class="st8" width="22.1" height="39.6"/>
+<rect x="427.6" y="212.4" class="st9" width="17.1" height="33.7"/>
+<rect x="364.2" y="241.7" class="st7" width="105.7" height="16.4"/>
+<rect x="425.1" y="209.5" class="st8" width="22.1" height="39.6"/>
+<rect x="427.6" y="212.4" class="st9" width="17.1" height="33.7"/>
+<rect x="436" y="212.4" class="st10" width="8.8" height="33.7"/>
+<rect x="417" y="30.4" class="st11" width="5.6" height="21.9"/>
+<rect x="417" y="241.7" class="st12" width="52.9" height="16.4"/>
+<polygon class="st6" points="417,9.5 395.2,31.4 438.9,31.4 "/>
+<rect x="389.9" y="45.4" class="st13" width="54.3" height="13.7"/>
+<rect x="386.1" y="57.2" class="st7" width="61.9" height="4.9"/>
+<path class="st0" d="M104.5,224.9h34.3c3,0,5.5,2.5,5.5,5.5l0,0c0,3-2.5,5.5-5.5,5.5h-34.3c-3,0-5.5-2.5-5.5-5.5l0,0
+	C99,227.3,101.5,224.9,104.5,224.9z"/>
+<g>
+	<defs>
+		<rect id="SVGID_3_" x="81" y="157.9" width="69.8" height="72"/>
+	</defs>
+	<clipPath id="SVGID_4_">
+		<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+	</clipPath>
+	<g class="st14">
+		<path class="st15" d="M108,168.3c3.9,5.3,29.8,45.3,29.8,45.3s-25.4,6.7-25.8,6S108,168.3,108,168.3"/>
+		<path class="st16" d="M108,168.3c2.8,11.1,6.6,34.7,9,50.5c-2.9,0.6-4.9,1-5,0.8C111.6,218.8,107.9,168.3,108,168.3"/>
+		<path class="st15" d="M107,167.6c-3.5,6.6-22.4,54.3-22.4,54.3s18-2.3,18.4-3.1S107,167.6,107,167.6"/>
+		<path class="st16" d="M107,167.6c-3.5,6.6-22.4,54.3-22.4,54.3s2.2-0.3,5.1-0.7C94,209.1,107,167.6,107,167.6"/>
+		<path class="st6" d="M93.7,162.5c4.5-1.5,9-2.7,13.6-3.7c0.2,3.3,0.2,4-0.2,5.6C103.3,164,97.9,163.4,93.7,162.5"/>
+		<path class="st17" d="M93.7,162.5c6.3-0.4,10.3-0.6,13.7-1c0,1-0.1,1.9-0.3,2.9C103.3,164,97.9,163.4,93.7,162.5"/>
+		<rect x="106.8" y="157.9" class="st18" width="1.5" height="64.1"/>
+		<rect x="106.8" y="157.9" class="st19" width="0.9" height="64.1"/>
+		<path class="st20" d="M138.6,226.9c2.3-2.9,4.7-5.7,7-8.6c1.1-1.4,2.3-2.9,3.3-4.4c0.6-0.8,1-1.6,1.6-2.4l0.2-0.3
+			c-11.9,2.5-60.6,9.2-69.8,11c0.3,2.5,0.8,6,1.1,7.6c16.3,0.3,44.4,0.2,54.4,0L138.6,226.9"/>
+		<path class="st21" d="M95,219.9c-6.4,1-11.6,1.8-14,2.2c0.3,2.5,0.8,6,1.1,7.6c3.8,0.1,8.2,0.1,12.9,0.1L95,219.9z"/>
+		<path class="st6" d="M148.9,214c-12,2.1-56,8.3-67.7,9.8c0.1,0.8,0.2,1.7,0.3,2.5c7.7-0.7,47.1-5.9,64.1-8.1
+			C146.8,216.8,147.9,215.4,148.9,214"/>
+		<path class="st17" d="M95,221.9l-13.8,1.9c0.1,0.8,0.2,1.7,0.3,2.5c2.2-0.2,7.1-0.8,13.4-1.5V221.9z"/>
+	</g>
+</g>
+</svg>
+																																						</div>
+																		</div>
+							</section> <!-- header-hero -->
+			<main role="main" class="hfeed site">
+<div id="primary" class="content-area">
+			<article id="post-8709" class="post-8709 page type-page status-publish hentry">
+			<section class="infos">
+
+				<div class="content-main">
+					<h2>Our experts will steer you in the right direction for your CRM project</h2>
+<p><span>[empresa] offers the most flexible and scalable range of CRM solutions on the market, with proven effectiveness for companies of all types and sizes. [empresa] now offers the most comprehensive set of software solutions on the market. </span></p>
+<p><span>In a nutshell: we bring fluidity to your organisation.</span></p>
+					<div class="help">
+						<h3>How can we help you?</h3>
+													<ul>
+																	<li>
+										<div class="picto">
+											<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="picto" data-lazy-src="./img/svg/white-tools-icon.svg"><noscript><img src="./img/svg/white-tools-icon.svg" alt="picto"></noscript>
+										</div>
+										<div class="content">
+											<p><span>Customer Service: do you have technical questions? Visit our <a href="#">forum</a> or contact us via <a href="#">the extranet</a>. If you need remote assistance, you can download the free version of <a href="#">Teamviewer</a>.</span></p>
+										</div>
+									</li>
+																	<li>
+										<div class="picto">
+											<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="picto" data-lazy-src="./img/svg/white-folder-icon.svg"><noscript><img src="./img/svg/white-folder-icon.svg" alt="picto"></noscript>
+										</div>
+										<div class="content">
+											<p><span>Training: Would you like to become a CRM diving instructor? Our experts will provide you with the training you need.</span></p>
+										</div>
+									</li>
+																	<li>
+										<div class="picto">
+											<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="picto" data-lazy-src="./img/svg/white-magnifying-glass-icon.svg"><noscript><img src="./img/svg/white-magnifying-glass-icon.svg" alt="picto"></noscript>
+										</div>
+										<div class="content">
+											<p style="padding: 30px 0 40px 0;">For other requests: partnership, communication</p>
+										</div>
+									</li>
+									</ul>
+							</div>
+				</div>
+				<div class="boxinfo">
+					<h4>We will respond to your queries within 48 hours</h4>
+					<div class="content_info">
+						>><h6 class="phones"><span></span>Call us:</h6>
+						<div>
+							+32 (0)2 XXX XX XX<br />
+							+33 (0)1 XX XX XX XX						</div>
+					</div>
+					<div class="content_info">
+						>><h6 class="clocks"><span></span>We offer a support service to all our customers:</h6>
+						<div>
+							Mon - Fri 8:00 - 18:30 (GMT +1)						</div>
+					</div>
+				</div>
+			</section>
+			<section class="form">
+				<div data-bg="./img/contact-crm.jpg" class="content-demo rocket-lazyload" style="">
+
+				</div>
+				<div class="">
+					<h2>Questions ?<br/> We have the answers</h2>
+					<form>
+						<label class="required" for="message">Your Message*</label>
+						<textarea></textarea>
+						<button class="submit" style="display: inline-block; text-transform: uppercase; font-family: 'Qanelas Soft Bold',Helvetica,Arial,serif; font-size: 0.9rem; letter-spacing: .15rem; line-height: 1.3rem; font-weight: bold; padding-left: 40px; padding-right: 40px;">Send</button>
+					</form>
+					
+				</div>
+					</section>
+					<section class="map">
+						<div>
+							<h2>Contact our [empresa] agencies</h2>
+							<div class="map-intro">
+								<p>We are based throughout Europe: Belgium, France, Germany, Portugal, The Netherlands, Spain, Switzerland, the United Kingdom. Feel free to contact the office closest to you.</p>
+							</div>
+						</div>
+						<div class="map-flex">
+							<div class="deks-list">
+								<ul>
+
+																			<li class="" data-id="55521">
+											<div class="flag">
+												<span><img width="24" height="16" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2016'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="" data-lazy-src="./img/flags/icon-flag-uk-1.png" /><noscript><img width="24" height="16" src="./img/flags/icon-flag-uk-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></noscript></span>
+												<span>UK</span>
+											</div>
+
+											<div class="locality">
+												Southwold Drive, Courtyard Business Centre, NJ100 9SB Nottingham											</div>
+											<div class="contact">
+												<a href="#">+44 XXXX XXX XXX</a>
+											</div>
+										</li>
+																				
+										<li class="" data-id="11660">
+											<div class="flag">
+												<span><img width="24" height="16" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2016'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="France&#039;s flag" data-lazy-src="./img/flags/icon-flag-france.png" /><noscript><img width="24" height="16" src="./img/flags/icon-flag-france.png" class="attachment-thumbnail size-thumbnail" alt="France&#039;s flag" /></noscript></span>
+												<span>France (Toulouse)</span>
+											</div>
+
+											<div class="locality">
+												000 Rue L'Occitane<br />
+31670 Labège<br />
+											</div>
+											<div class="contact">
+												<a href="#">+33 (0)1 XX XX XX XX</a>
+											</div>
+										</li>
+																				<li class="" data-id="11663">
+											<div class="flag">
+												<span><img width="18" height="12" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2018%2012'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Flag Germany" data-lazy-src="./img/flags/icon-flag-germany.png" /><noscript><img width="18" height="12" src="./img/flags/icon-flag-germany.png" class="attachment-thumbnail size-thumbnail" alt="Flag Germany" /></noscript></span>
+												<span>Germany (Frankfurt)</span>
+											</div>
+
+											<div class="locality">
+												Schummanstraße 666<br />
+60325 Frankfurt<br />
+											</div>
+											<div class="contact">
+												<a href="#">+49 (0) XXX XXX XXX XX</a>
+											</div>
+										</li>
+																			
+										<li class="" data-id="55574">
+											<div class="flag">
+												<span><img width="24" height="16" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2016'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="" data-lazy-src="./img/flags/icon-flag-portugal.png" /><noscript><img width="24" height="16" src="./img/flags/icon-flag-portugal.png" class="attachment-thumbnail size-thumbnail" alt="" /></noscript></span>
+												<span>Portugal</span>
+											</div>
+
+											<div class="locality">
+												Avenida Migual Bombarda, 80H, XXX-XXX Oeiras											</div>
+											<div class="contact">
+												<a href="#">+351 XXX XXX XXX</a>
+											</div>
+										</li>
+																																						<li class="" data-id="8732">
+											<div class="flag">
+												<span><img width="24" height="16" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2016'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="Netherland&#039;s flag" data-lazy-src="./img/flags/icon-flag-netherlands.png" /><noscript><img width="24" height="16" src="./img/flags/icon-flag-netherlands.png" class="attachment-thumbnail size-thumbnail" alt="Netherland&#039;s flag" /></noscript></span>
+												<span>Netherlands (Utrecht)</span>
+											</div>
+
+											<div class="locality">
+												Atoomweg 00<br />
+3542 AA Utrecht											</div>
+											<div class="contact">
+												<a href="#">+31 (0)XX XXX XX XX</a>
+											</div>
+										</li>
+																				<li class="" data-id="36684">
+											<div class="flag">
+												<span><img width="24" height="16" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2016'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail" alt="icon flag spain" data-lazy-src="./img/flags/icon-flag-spain.png" /><noscript><img width="24" height="16" src="./img/flags/icon-flag-spain.png" class="attachment-thumbnail size-thumbnail" alt="icon flag spain" /></noscript></span>
+												<span>Spain (Madrid)</span>
+											</div>
+
+											<div class="locality">
+												Calle de Fuencarral, 1, 2 der, 28004 Madrid											</div>
+											<div class="contact">
+												<a href="#">+34 910 XX XX XX</a>
+											</div>
+										</li>
+									</ul>
+							</div>
+							<div id="gmap" style="min-height: 500px;">
+
+							</div>
+
+						</div>
+					</section>
+
+				</article><!-- #post-8709 -->
+					</div><!-- #primary -->
+
+		
+</main>
+
+</section>
+<footer id="footer-main">
+	<div id="colophon" role="contentinfo">
+		<div class="wrapper-credit">
+			<p class="credit">© Copyright 2021 [empresa] - All rights reserved</p>
+			<nav class="gdpr-menu" role="navigation">
+				<div class="menu-gdpr-menu-container"><ul id="menu-gdpr-menu" class="menu">
+					<li id="menu-item-6" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a href="./terms-and-conditions.html">Terms of use</a></li>
+					<li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="./privacy-policy.html">Privacy Policy</a></li>
+					<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="./cookie-policy.html">Cookie Policy</a></li>
+					<li id="menu-item-63437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63437"><a href="./general-terms-and-conditions-of-sale.html">Terms of Sale</a></li>
+					<li id="menu-item-49246" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-49246"><a href=".crm-meaning.html">CRM Meaning</a></li>
+			</ul></div>			
+			</nav>
+		</div>
+	</div>
+</footer><!-- footer-main -->
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js" ></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js" ></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/placeholders/2.1.0/placeholders.js" ></script>
+<![endif]-->
+
+<!--googleoff: index-->
+    			<!--googleon: index--><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: ES - Exit intent - 1 --><script type="rocketlazyloadscript">(function(d){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.campaign='irzli6zx1yk34mr3iniy';s.dataset.user='74379';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script><!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: ES - Demo - Cedric --><script type="rocketlazyloadscript">(function(d){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.campaign='vqodbzpjpv2wwuz7mwv4';s.dataset.user='74379';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script><!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: ES - Demo - Alfredo --><script type="rocketlazyloadscript">(function(d){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.campaign='crtbdpkmgenn8hb55vwf';s.dataset.user='74379';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script><!-- / OptinMonster -->		
+		
+<script data-minify="1" type='text/javascript' src='./js/modernizr-custom.js?ver=1627389757' id='modernizr-js' defer></script>
+
+<script type='text/javascript' src='./js/owl.carousel.min.js' id='gbl-owl-js' defer></script>
+<script data-minify="1" type='text/javascript' src='./js/transition.js?ver=1627389757' id='bootstrapTransition-js' defer></script>
+<script data-minify="1" type='text/javascript' src='./js/tab.js?ver=1627389757' id='bootstrapTabs-js' defer></script>
+<script data-minify="1" type='text/javascript' src='./js/jquery-match-height.js?ver=1627389757' id='matchHeight-js' defer></script>
+
+<script type='text/javascript' src='./js/main.min.js' id='gbl-toolbox-js' defer></script>
+
+<script type='text/javascript' src='./js/wp-embed.min.js?ver=5.7.2' id='wp-embed-js' defer></script>
+
+<script type='text/javascript' id='cookie-agreed-js-extra'>
+/* <![CDATA[ */
+var cookie = {"validity":"360"};
+/* ]]> */
+</script>
+
+<script data-minify="1" type='text/javascript' src='./js/helper.js?ver=1627389757' id='optinmonster-wp-helper-js' defer></script>
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"wc_cart":[],"object_id":8709,"object_key":"page","object_type":"post","term_ids":[]};</script>
+
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script>
+<script data-no-minify="1" async src="./js/lazyload.min.js"></script>
+<script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<div class="play"></div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script><div class="modal">
+	<div class="modal-content">
+		<button class="close">X</button>
+	</div>
+</div>
+<style type="text/css">
+	#menu-gdpr-menu, .languages {padding-bottom:0px!important}
+
+ul, ol {padding-bottom:20px!important}
+
+@media screen and (max-width: 590px) {
+  .two-columns-post {width:100%!important;}
+}
+
+#products-comparator .comparator-products > ul > li {width: 16rem;}
+
+div.contact, div.locality {margin-top:1rem!important;}
+li. {margin-top:2rem!important;}
+div.contact a {font-size: 1.2rem;}
+
+
+.product-option {font-size: 15px; padding-top: 15px;color:#35a0b7;}
+
+@media (min-width: 1200px) {
+.section-html.section-products article { width:25%!important; } }
+
+
+.inner-nav ul li:before, .parent-flex ul li:before, .wrapper-picto ul li:before, .list-pictures li:before, .parent-flex li:before, .comparator-labels ul li:before, .ul-list-link li:before, .ul-list-post li:before, .:before, div.help ul li:before  {
+display:none!important;
+}
+
+
+h3.list {
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    color: #4ca928;
+    font-size: 1.8rem!important;
+    line-height: 2.4rem;
+}
+@media (max-width: 1440px){
+h3.list {
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    color: #4ca928;
+    font-size: 1.8rem!important;
+    line-height: 2.4rem;}
+}
+
+.ask-for-demo {padding: 4rem 6rem;} 
+@media (max-width: 1160px) {.ask-for-demo {padding: 4rem 2rem;} 
+
+.language-banner .wrapper {justify-content: normal;}
+
+.language-banner .wrapper .text {margin-right:2rem;}
+
+.widget_eff_newsletter #mc_embed_signup iframe {height:440px;}
+
+@media (min-width: 1200px) {
+section.wrapper-whitepaper iframe, section.whitepaper iframe {height:440px;}
+.wrapper-whitepaper .whitepaper{padding:9rem 9rem 9rem 12rem}
+}
+section.footer-big .col-right #mc_embed_signup iframe {height:440px;}
+
+#products-comparator .comparator-products header h2 {font-size: 2rem;font-weight: normal;}
+
+@media screen and (max-width: 800px) {
+  #tablewebinar tbody tr td{font-size:1rem!important;padding:0.5rem}
+  #tablewebinar tbody tr td a.btn span {font-size:1rem!important;padding:0rem}
+  #tablewebinar tbody tr td a.btn {padding:0.5rem 1rem!important;}
+  .webinardescription {display:none;}
+  #tablewebinar tbody tr th{font-size:1rem!important;padding:0.5rem}
+}
+
+@media screen and (max-width: 1070px) {
+  .cities {width:20%!important;}
+  .text-cities  {font-size:14px!important;}
+  .third-city {width:20%!important;}
+  .four-cities{padding-bottom:30rem;}
+}
+@media screen and (max-width: 800px) {
+  .title {text-align:center;}
+  .form-crm-day {height: 75rem!important;}
+}
+@media screen and (max-width: 590px) {
+  .cities {width:35%!important;}
+  .text-cities {font-size:14px!important;}
+  .third-city {margin-left: 5rem!important;width:35%!important;}
+  .four-cities{padding-bottom:65rem!important;}
+}
+@media screen and (max-width: 340px) {
+  .cities {width:30%!important;}
+  .text-cities {font-size:10px!important;}
+  .third-city {margin-left: 5rem!important;width:30%!important;}
+
+}
+
+.speaker{text-align: left; width: 130px;border-width: 0px !important; color:#35a0b7;font-size: 16px;font-family: Arial;}
+.conference {text-align: left;border-width: 0px !important;font-family: Arial;font-size: 16px;width: 60%;}
+.time{border-width: 0px !important;text-align: left;}
+
+li {
+    list-style-position: inside;
+}
+p {
+text-align:justify;
+}
+
+.whitepaper {
+/*padding: 9rem 12rem;
+margin-bottom: 28rem;
+margin-left: 9rem;*/
+width: 40%;
+float: right;
+}
+.cards-download article {
+    width: auto;
+    float: left;
+}
+
+</style>
+
+</body>
+</html>

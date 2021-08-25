@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html class="ie lte-ie9 lte-ie8 lte-ie7 ie6" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie lte-ie9 lte-ie8 lte-ie7 ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie lte-ie9 lte-ie8 ie8" lang="en-US">
+<![endif]-->
+<!--[if IE 9]>
+<html class="ie lte-ie9 ie9" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8) | !(IE 9)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let i;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",i=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")&&this._isValidScriptType(i)?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}_isValidScriptType(e){return!e||""===e||"string"==typeof e&&["text/javascript","text/x-javascript","text/ecmascript","text/jscript","application/javascript","application/x-javascript","application/ecmascript","application/jscript","module"].includes(e.toLowerCase())}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){const n=e[t];Object.defineProperty(e,t,{get:n||function(){},set:n=>{e["rocket"+t]=n}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const o=document.createDocumentFragment();i.setStart(o,0),o.appendChild(i.createContextualFragment(t)),r.insertBefore(o,a)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","touchcancel","touchforcechange","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
+</script>
+	<meta charset="UTF-8" />
+
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+
+	<meta name="author" content="Efficy" />
+
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&#038;display=swap" rel="stylesheet">
+	<link rel="alternate" type="application/rss+xml" title="S'abonner au flux rss de efficy" href="https://www.efficy.com/feed" />
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="https://www.efficy.com/wp-content/themes/gbl-toolbox/js/html5.js" ></script>
+<![endif]-->
+
+	<meta name="msapplication-square70x70logo" content="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/windows-tile-70x70.png">
+	<meta name="msapplication-square150x150logo" content="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/windows-tile-150x150.png">
+	<meta name="msapplication-square310x310logo" content="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/windows-tile-310x310.png">
+	<meta name="msapplication-TileImage" content="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/windows-tile-144x144.png">
+	<meta name="msapplication-TileColor" content="#4BA928">
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-152x152-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-120x120-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-76x76-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-60x60-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-144x144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/apple-touch-icon.png">
+	<link rel="icon" sizes="228x228" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/coast-icon-228x228.png">
+	<link rel="shortcut icon" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="64x64" href="https://www.efficy.com/wp-content/themes/gbl-toolbox/img/favicon/favicon.png">
+
+
+<meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" hreflang="en" href="https://www.efficy.com/crm-meaning/" />
+<link rel="alternate" hreflang="fr" href="https://www.efficy.com/fr/crm-definition/" />
+<link rel="alternate" hreflang="fr-be" href="https://www.efficy.com/be-fr/crm-definition/" />
+<link rel="alternate" hreflang="nl-be" href="https://www.efficy.com/be-nl/crm-betekenis/" />
+<link rel="alternate" hreflang="nl" href="https://www.efficy.com/nl/crm-betekenis/" />
+<link rel="alternate" hreflang="fr-ch" href="https://www.efficy.com/ch-fr/crm-definition/" />
+
+	<!-- This site is optimized with the Yoast SEO plugin v15.5 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>CRM meaning. What is CRM? Definition of CRM.</title><link rel="stylesheet" href="https://www.efficy.com/wp-content/cache/min/1/7856cf781c26a3160a06f572a12a2da1.css" media="all" data-minify="1" />
+	<meta name="description" content="CRM meaning. What is CRM? CRM stands for Customer Relationship Management. It is a sales and customer management software." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="CRM meaning. What is CRM? Definition of CRM." />
+	<meta property="og:description" content="CRM meaning. What is CRM? CRM stands for Customer Relationship Management. It is a sales and customer management software." />
+	<meta property="og:url" content="https://www.efficy.com/crm-meaning/" />
+	<meta property="og:site_name" content="efficy" />
+	<meta property="article:publisher" content="https://www.facebook.com/efficy/" />
+	<meta property="article:published_time" content="2020-02-08T17:27:08+00:00" />
+	<meta property="article:modified_time" content="2021-04-23T08:08:59+00:00" />
+	<meta property="og:image" content="https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm.jpg" />
+	<meta property="og:image:width" content="900" />
+	<meta property="og:image:height" content="412" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@efficy_en" />
+	<meta name="twitter:site" content="@efficy_en" />
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="Efficyers">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="4 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.efficy.com/#organization","name":"Efficy","url":"https://www.efficy.com/","sameAs":["https://www.facebook.com/efficy/","https://www.linkedin.com/company/efficy/","https://www.youtube.com/user/EfficyCRM","https://twitter.com/efficy_en"],"logo":{"@type":"ImageObject","@id":"https://www.efficy.com/#logo","inLanguage":"en-US","url":"https://www.efficy.com/wp-content/uploads/2018/12/efficy-logo-mobile.png","width":190,"height":36,"caption":"Efficy"},"image":{"@id":"https://www.efficy.com/#logo"}},{"@type":"WebSite","@id":"https://www.efficy.com/#website","url":"https://www.efficy.com/","name":"efficy","description":"","publisher":{"@id":"https://www.efficy.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://www.efficy.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://www.efficy.com/crm-meaning/#primaryimage","inLanguage":"en-US","url":"https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm.jpg","width":900,"height":412},{"@type":"WebPage","@id":"https://www.efficy.com/crm-meaning/#webpage","url":"https://www.efficy.com/crm-meaning/","name":"CRM meaning. What is CRM? Definition of CRM.","isPartOf":{"@id":"https://www.efficy.com/#website"},"primaryImageOfPage":{"@id":"https://www.efficy.com/crm-meaning/#primaryimage"},"datePublished":"2020-02-08T17:27:08+00:00","dateModified":"2021-04-23T08:08:59+00:00","description":"CRM meaning. What is CRM? CRM stands for Customer Relationship Management. It is a sales and customer management software.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.efficy.com/crm-meaning/"]}]},{"@type":"Article","@id":"https://www.efficy.com/crm-meaning/#article","isPartOf":{"@id":"https://www.efficy.com/crm-meaning/#webpage"},"author":{"@id":"https://www.efficy.com/#/schema/person/b7780ca80c963b3cb8b07088ca693857"},"headline":"CRM Meaning: What is CRM? Definition of CRM and CRM Software.","datePublished":"2020-02-08T17:27:08+00:00","dateModified":"2021-04-23T08:08:59+00:00","mainEntityOfPage":{"@id":"https://www.efficy.com/crm-meaning/#webpage"},"publisher":{"@id":"https://www.efficy.com/#organization"},"image":{"@id":"https://www.efficy.com/crm-meaning/#primaryimage"},"keywords":"CRM tool","articleSection":"CRM technology","inLanguage":"en-US"},{"@type":"Person","@id":"https://www.efficy.com/#/schema/person/b7780ca80c963b3cb8b07088ca693857","name":"Efficyers","image":{"@type":"ImageObject","@id":"https://www.efficy.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/92bcd5a645877b54b05da10082e4ca6b?s=96&d=mm&r=g","caption":"Efficyers"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//a.omappapi.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+
+
+<style id='rocket-lazyload-inline-css' type='text/css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://www.efficy.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}
+</style>
+<script type='text/javascript' src='https://www.efficy.com/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://www.efficy.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<link rel="canonical" href="https://www.efficy.com/crm-meaning/" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><!-- Google Tag Manager -->
+<script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7QTK8W');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-352237-2"></script>
+<script type="rocketlazyloadscript">
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-352237-2');
+</script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Ads: 699459006 -->
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=AW-699459006"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-699459006');
+</script>
+
+
+
+<!-- Facebook Pixel Code -->
+<script type="rocketlazyloadscript">
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3953136598108749');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3953136598108749&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+</head>
+
+<body class="post-template-default single single-post postid-46800 en">
+	
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7QTK8W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript>
+		<style>
+			.owl-carousel {
+				visibility:visible;
+			}
+		</style>
+	</noscript>
+	
+
+	
+		
+<section class="header-hero">
+	<div class="ribbon">
+		
+			<section class="sub-header language-banner" style="display:none">
+				<div class="wrapper">
+					<div class="text">Choose your language to view content specific to your geographic location.</div>
+					<div class="dropdown">
+						<form method="POST">
+        <select name="languages-switcher" class="languages"><option selected='selected' value='https://www.efficy.com/crm-meaning/' ><span class="icl_lang_sel_current icl_lang_sel_native">English</span></li><option  value='https://www.efficy.com/fr/crm-definition/' ><span class="icl_lang_sel_current icl_lang_sel_native">Français</span></option><option  value='https://www.efficy.com/be-fr/crm-definition/' ><span class="icl_lang_sel_current icl_lang_sel_native">Français Belgique</span></option><option  value='https://www.efficy.com/be-nl/crm-betekenis/' ><span class="icl_lang_sel_current icl_lang_sel_native">Nederlands Belgie</span></option><option  value='https://www.efficy.com/nl/crm-betekenis/' ><span class="icl_lang_sel_current icl_lang_sel_native">Nederlands</span></option><option  value='https://www.efficy.com/ch-fr/crm-definition/' ><span class="icl_lang_sel_current icl_lang_sel_native">Français Suisse</span></option></select><input type="submit" class="btn" value="Continue" ></form>					</div>
+				</div>
+			</section>
+				<header id="header-main" role="banner">
+			<div class="header-wrapper">
+				<div class="header-inner">
+					<div id="branding">
+						<strong>
+								<a href="https://www.efficy.com/" title="efficy" rel="home">
+									efficy - 								</a>
+						</strong>
+					</div>
+					<div class="trigger-menu">
+						<button class="burger-menu" role="widget">
+							<span>Open-Close the menu</span>
+						</button>
+					</div>
+								<div class="phone-menu-mobile-wrapper">
+					<nav id="access" role="navigation">
+							<div class="menu-main-en-container"><ul id="menu-main-en" class="menu"><li id="menu-item-8921" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8921"><a href="https://www.efficy.com/crm-departments/">Roles &#038; Industries</a>
+<div class='submenu-wrapper'><div class='inner'><div class='inner-inner'><ul class="sub-menu">
+	<li id="menu-item-8926" class="menu-item menu-item-type-post_type menu-item-object-solutions menu-item-8926"><a href="https://www.efficy.com/roles/crm-for-sales/">Sales</a></li>
+	<li id="menu-item-8925" class="menu-item menu-item-type-post_type menu-item-object-solutions menu-item-8925"><a href="https://www.efficy.com/roles/crm-marketing/">Marketing</a></li>
+	<li id="menu-item-8927" class="menu-item menu-item-type-post_type menu-item-object-solutions menu-item-8927"><a href="https://www.efficy.com/roles/crm-customer-service/">Customer Service</a></li>
+	<li id="menu-item-8924" class="menu-item menu-item-type-post_type menu-item-object-solutions menu-item-8924"><a href="https://www.efficy.com/roles/crm-management/">Management</a></li>
+	<li id="menu-item-21573" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21573"><a href="https://www.efficy.com/crm-departments/">All the roles</a></li>
+	<li id="menu-item-8936" class="menu-item menu-item-type-post_type menu-item-object-sector menu-item-8936"><a href="https://www.efficy.com/industries/crm-for-banking-insurance/">Bank &#038; Insurance</a></li>
+	<li id="menu-item-40019" class="menu-item menu-item-type-post_type menu-item-object-sector menu-item-40019"><a href="https://www.efficy.com/industries/crm-for-healthcare-professionals/">Healthcare</a></li>
+	<li id="menu-item-40020" class="menu-item menu-item-type-post_type menu-item-object-sector menu-item-40020"><a href="https://www.efficy.com/industries/crm-for-industry/">Industry</a></li>
+	<li id="menu-item-40021" class="menu-item menu-item-type-post_type menu-item-object-sector menu-item-40021"><a href="https://www.efficy.com/industries/crm-for-local-governments/">Institutions</a></li>
+	<li id="menu-item-40022" class="menu-item menu-item-type-post_type menu-item-object-sector menu-item-40022"><a href="https://www.efficy.com/industries/crm-for-law-firms/">Lawyers</a></li>
+	<li id="menu-item-40023" class="menu-item menu-item-type-post_type menu-item-object-sector menu-item-40023"><a href="https://www.efficy.com/industries/crm-for-real-estate/">Real Estate</a></li>
+	<li id="menu-item-18026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18026"><a href="https://www.efficy.com/business-sector-crm/">Other industries</a></li>
+</ul></div><div class='block-wrapper'><div class='block-wrapper-text'><div class='menu_block_title'>One single CRM used by all departments </div><div class='menu_block_text'>Efficy’s CRM solutions cover all the aspects of Customer Relationship Management: Sales, Marketing, Customer service, Management, etc. </div><div class='menu_block_cta'><a href='https://www.efficy.com/crm-departments/' class='read-more'>Roles</a></div></div><div data-bg="https://www.efficy.com/wp-content/uploads/2019/01/roles-crm-241x300.jpg" class='block-wrapper-img rocket-lazyload' style=''></div></div></div></div>
+</li>
+<li id="menu-item-8923" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8923"><a href="https://www.efficy.com/solution-crm/">Price</a>
+<div class='submenu-wrapper'><div class='inner'><div class='inner-inner'><ul class="sub-menu">
+	<li id="menu-item-54324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-54324"><a href="https://www.efficy.com/solutions/efficy-crm-starter/">Starter</a></li>
+	<li id="menu-item-54325" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-54325"><a href="https://www.efficy.com/solutions/efficy-crm-smb/">SMB</a></li>
+	<li id="menu-item-40024" class="menu-item menu-item-type-post_type menu-item-object-products menu-item-40024"><a href="https://www.efficy.com/solutions/efficy-crm-enterprise/">Enterprise</a></li>
+	<li id="menu-item-40026" class="menu-item menu-item-type-post_type menu-item-object-products menu-item-40026"><a href="https://www.efficy.com/solutions/efficy-crm-corporate/">Corporate</a></li>
+	<li id="menu-item-21582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21582"><a href="https://www.efficy.com/solution-crm/">Comparative analysis</a></li>
+</ul></div><div class='block-wrapper'><div class='block-wrapper-text'><div class='menu_block_title'>Complementary CRM solutions </div><div class='menu_block_text'>We offer a wide range of complementary CRM products. Tell us what you need and we will do the rest. </div><div class='menu_block_cta'><a href='https://www.efficy.com/solution-crm/' class='read-more'>CRM Solutions</a></div></div><div data-bg="https://www.efficy.com/wp-content/uploads/2019/01/crm-solutions-242x300.jpg" class='block-wrapper-img rocket-lazyload' style=''></div></div></div></div>
+</li>
+<li id="menu-item-40016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40016"><a href="https://www.efficy.com/features-efficy-crm/">Features</a>
+<div class='submenu-wrapper'><div class='inner'><div class='inner-inner'><ul class="sub-menu">
+	<li id="menu-item-40017" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40017"><a href="https://www.efficy.com/features-efficy-crm/">CRM features</a></li>
+	<li id="menu-item-40018" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40018"><a href="https://www.efficy.com/efficy-crm-technical-description/">Technical characteristics</a></li>
+</ul></div><div class='block-wrapper'><div class='block-wrapper-text'><div class='menu_block_title'>How Efficy works ?</div><div class='menu_block_text'>Find the complete list of Efficy´s modules that helps you to manage your business activities.</div><div class='menu_block_cta'><a href='https://www.efficy.com/features-efficy-crm/' class='read-more'>Features</a></div></div><div data-bg="https://www.efficy.com/wp-content/uploads/2019/03/crm-technical-description.jpg" class='block-wrapper-img rocket-lazyload' style=''></div></div></div></div>
+</li>
+<li id="menu-item-18250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-18250"><a href="https://www.efficy.com/efficy-crm-software-publisher/">About us</a>
+<div class='submenu-wrapper'><div class='inner'><div class='inner-inner'><ul class="sub-menu">
+	<li id="menu-item-9012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9012"><a href="https://www.efficy.com/efficy-crm-software-publisher/">About us</a></li>
+	<li id="menu-item-8580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8580"><a href="https://www.efficy.com/our-crm-news/">Our news</a></li>
+	<li id="menu-item-8631" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8631"><a href="https://www.efficy.com/references-crm/">Our customers</a></li>
+	<li id="menu-item-8952" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8952"><a href="https://www.efficy.com/partners-efficy-group/">Our partners</a></li>
+	<li id="menu-item-9008" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9008"><a href="https://www.efficy.com/crm-jobs/">Jobs</a></li>
+</ul></div><div class='block-wrapper'><div class='block-wrapper-text'><div class='menu_block_title'>Efficy #EuropeanCRMChampion</div><div class='menu_block_text'>We are aiming to become the European CRM champion. Let’s do that together!</div><div class='menu_block_cta'><a href='https://www.efficy.com/efficy-crm-software-publisher/' class='read-more'>About Us</a></div></div><div data-bg="https://www.efficy.com/wp-content/uploads/2019/01/efficy-283x300.jpg" class='block-wrapper-img rocket-lazyload' style=''></div></div></div></div>
+</li>
+<li id="menu-item-40014" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40014"><a href="https://www.efficy.com/blog/">Blog</a></li>
+<li id="menu-item-25374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25374"><a href="https://www.efficy.com/knowledge-center/">Resources</a>
+<div class='submenu-wrapper'><div class='inner'><div class='inner-inner'><ul class="sub-menu">
+	<li id="menu-item-67522" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67522"><a href="https://www.efficy.com/sales-course-for-large-companies/">Sales course</a></li>
+	<li id="menu-item-26139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26139"><a href="https://www.efficy.com/knowledge-center/">Knowledge center</a></li>
+	<li id="menu-item-40012" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40012"><a target="_blank" rel="noopener" href="https://extranet.efficy.com/">Extranet</a></li>
+	<li id="menu-item-41253" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41253"><a href="https://www.efficy.com/efficy-crm-training/">Training sessions</a></li>
+	<li id="menu-item-8581" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8581"><a href="https://www.efficy.com/glossary/">Glossary</a></li>
+</ul></div><div class='block-wrapper'><div class='block-wrapper-text'><div class='menu_block_title'>A library at your disposal</div><div class='menu_block_text'>Browse through the resources we offer in our library. You’ll find White papers with a wealth of tips, informative brochures, etc. Take your pick!</div><div class='menu_block_cta'><a href='https://www.efficy.com/knowledge-center/' class='read-more'>Knowledge center</a></div></div><div data-bg="https://www.efficy.com/wp-content/uploads/2019/01/ressources-crm-242x300.jpg" class='block-wrapper-img rocket-lazyload' style=''></div></div></div></div>
+</li>
+<li id="menu-item-40011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40011"><a href="https://www.efficy.com/contact-efficy-crm-group/">Contact</a></li>
+<li id="menu-item-40010" class="search-btn menu-item menu-item-type-custom menu-item-object-custom menu-item-40010"><a href="#">Search</a></li>
+</ul></div>												</nav><!-- #access -->
+														<a href="https://www.efficy.com/request-demo-efficy-crm/" class="btn"><span>TRY IT FREE</span></a>
+
+						<div class="search-form-wrapper fade">
+	<div class="close">X</div>
+	<div class="content-search">
+		<p>What are you looking for?</p>
+		<form role="search" method="get" class="search-form" action="https://www.efficy.com/">
+			<label class="screen-reader-text">Search for:</label>
+			<input type="search" class="search-field" placeholder="Search ..." value="" name="s" title="Search for:" />
+			<div class="wrapper-search-submit">
+				<input type="submit" class="search-submit" value="Search" />
+			</div>
+		</form>
+		<div>
+					</div>
+	</div>
+</div>
+					</div>
+				</div>
+						</div>
+	</header><!-- #header-main -->
+</div>
+
+		<div class="hero">
+															<div class="txt">
+								<h1>CRM Meaning: What is CRM? Definition of CRM and CRM Software.</h1>
+									<div class="intro">
+																																								</div>
+								</div>
+								<div class="img">
+																																																																																																					</div>
+																		</div>
+							</section> <!-- header-hero -->
+			<main role="main" class="hfeed site">
+
+<div id="primary" class="content-area">
+
+					
+		<article id="post-46800" class="h-entry article-blog" itemscope itemtype="http://schema.org/NewsArticle">
+							<figure class="u-photo">
+					<a href="https://www.efficy.com/crm-meaning/" class="u-url" title="Lire cet article sur notre blog">
+						<img width="900" height="412" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20412'%3E%3C/svg%3E" class="attachment-header size-header wp-post-image" alt="" data-lazy-srcset="https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm.jpg 900w, https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm-300x137.jpg 300w, https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm-768x352.jpg 768w" data-lazy-sizes="(max-width: 900px) 100vw, 900px" data-lazy-src="https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm-900x412.jpg" /><noscript><img width="900" height="412" src="https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm-900x412.jpg" class="attachment-header size-header wp-post-image" alt="" srcset="https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm.jpg 900w, https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm-300x137.jpg 300w, https://www.efficy.com/wp-content/uploads/2019/03/what-is-a-crm-768x352.jpg 768w" sizes="(max-width: 900px) 100vw, 900px" /></noscript>					</a>
+				</figure>
+						<div class="content">
+				<section class="infos">
+					<div class="category">
+						Categories: <a href="https://www.efficy.com/category/crm-technology/" rel="tag">CRM technology</a>					</div>
+					<div class="tag">
+																																									<span>CRM tool</span>
+											</div>
+					<div>
+						<p>This post was written by Efficyers</p>
+					</div>
+					<div>
+					</div>
+				</section><!-- .entry-header -->
+
+				<div itemprop="articleBody" class="e-content">
+					<p>CRM stands for Customer Relationship Management. The CRM meaning is a sales and customer relationship management software. Although it is also understood as a business strategy that puts the customer at the centre of everything.</p>
+<h2>CRM meaning as a business management strategy</h2>
+<p>A company&#8217;s reason for existence is happy customers, customers who repeat and recommend your brand.</p>
+<p>On this basis, the meaning of <strong>CRM</strong> is born as <strong>a way of managing the business in which the customer is placed at the centre</strong> of all departments and all operations and, in short, of the entire company.</p>
+<p>This management strategy, also called <strong>customer-centric</strong>, is materialised with customer analysis and processes through sales and management software as a CRM.</p>
+<h2>CRM meaning as a sales and customer management software</h2>
+<p>With the digitisation of the economy and most business processes, the old contact managers have evolved into more modern solutions.</p>
+<p>The definitive evolution of this type of tool led to <strong>today&#8217;s CRMs, which are tools with which to manage relations with your future and current clients.</strong></p>
+<p>Most are<strong> <a href="https://www.efficy.com/online-crm/">online CRMs</a> with multiple functionalities, from marketing campaign management, sales, customer management, to reporting.</strong></p>
+<p>These tools are indispensable for implementing a customer-centric philosophy in your company.</p>
+<p><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20271%20265'%3E%3C/svg%3E" alt="Cómo funciona un CRM" class="aligncenter wp-image-33686 size-full" title="Qué es CRM" width="271" height="265" data-lazy-src="https://www.efficy.com/wp-content/uploads/2020/02/que-es-crm2.png" /><noscript><img src="https://www.efficy.com/wp-content/uploads/2020/02/que-es-crm2.png" alt="Cómo funciona un CRM" class="aligncenter wp-image-33686 size-full" title="Qué es CRM" width="271" height="265" /></noscript></p>
+<h2>Definition of CRM</h2>
+<p>In other words,<strong> the meaning of CRM</strong> is 2 things: On the one hand, the <a href="https://www.efficy.com/crm-strategy/">CRM strategy</a> of business management oriented towards putting the customer at the centre of the business, and on the other hand, the <a href="https://www.efficy.com/crm-for-smb/">CRM software for small business</a> (or <a href="https://www.efficy.com/crm-for-business/">CRM for companies</a>) that makes it possible for the customer to be the centre.</p>
+<section class="ask-for-demo" style="width: 100%; padding: 4rem 7rem;">
+<p style="margin-bottom: 0; font-size: 2.6rem; line-height: 3.6rem;">Try Efficy CRM<br />
+The most complete CRM</p>
+<p><a href="https://www.efficy.com/request-demo-efficy-crm/" class="btn"><span>TRY NOW FOR FREE</span></a></p>
+</section>
+<h2>What is a CRM?</h2>
+<p>By definition, a CRM tool must always serve 3 functions in the proper functioning of a company:</p>
+<ul>
+<li>Sell more and better.</li>
+<li>Improve customer satisfaction.</li>
+<li>Improve internal communication.</li>
+</ul>
+<p><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20695%20218'%3E%3C/svg%3E" alt="What is a CRM" class="aligncenter wp-image-33733 size-full" title="What is a CRM" width="695" height="218" data-lazy-src="https://www.efficy.com/wp-content/uploads/2019/03/what-is-crm.png" /><noscript><img src="https://www.efficy.com/wp-content/uploads/2019/03/what-is-crm.png" alt="What is a CRM" class="aligncenter wp-image-33733 size-full" title="What is a CRM" width="695" height="218" /></noscript></p>
+<h3>Sell more and better</h3>
+<div id="om-quj08wmp4kb66xyyomzy-holder"></div>
+<p> <script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://a.omappapi.com/app/js/api.min.js" data-campaign="quj08wmp4kb66xyyomzy" data-user="74379" async></script></p>
+<p>The main benefit of using <a href="https://www.efficy.com/crm-applications/">CRM applications</a> is to improve your sales.</p>
+<p>According to a NASP study, 80% of sales are made after 5 contacts with the potential customer.</p>
+<p>However, according to the same study, 90% of salespeople only contact a lead 4 times.</p>
+<p>This means that 9 out of 10 salespeople are unknowingly losing 80% of their sales.</p>
+<p>Why does this happen?</p>
+<p>The main reason is that, <strong>following up on a sales opportunity without a suitable tool is very difficult.</strong></p>
+<p>Here&#8217;s an example:</p>
+<p>When you call someone on the phone, it is very easy to catch them at a bad time and not have them attend to you.</p>
+<p>Then you send them an email and they don&#8217;t answer, because they have a full mailbox.</p>
+<p>A few days later you try again on the phone and nobody picks up the phone.</p>
+<p>Weeks later you try again, and again you don&#8217;t succeed.</p>
+<p>After a couple of weeks of trying to make contact, it is very easy for other, fresher opportunities to displace this one and you end up forgetting about this lead.</p>
+<p>This, with<strong> a CRM software</strong>, doesn&#8217;t happen, as<strong> it allows you to set continuous reminders, follow up at the right time, and even check when your email has been read.</strong></p>
+<p>With these features and many others, your sales team sells more and sells better.</p>
+<h3>Improve customer satisfaction</h3>
+<p>Companies know that it costs on average 6 to 7 times more to acquire a new customer than to keep one they already have.</p>
+<p>Customer service is the main focus of business management, even though it used to be an unattended area.</p>
+<p>With <a href="https://www.efficy.com/crm-tools/">CRM tools</a>, as all the customer&#8217;s information is centralised in the tool, anyone in the company <strong>can see all the communications that have been made with that customer</strong> before picking up the phone or answering an email, if they have had any problems or if they have any pending management.</p>
+<p>By having this information even if they have never spoken to the customer, <strong>the service person can provide a much more personalised service than someone who would work without a CRM software.</strong></p>
+<h3>Improve internal communication</h3>
+<p><strong>Notifying a colleague of problems or outstanding tasks r</strong>elated to a client is a simple task.</p>
+<p>It is also much easier to<strong> create alarms and reminders</strong>, both for yourself and others.</p>
+<p>In addition, everyone in the company <strong>can have a 360º view of the customer</strong> in general and even of each customer in particular.</p>
+<p><strong>These three changes</strong> make internal communication flow much better, no tasks remain unresolved and information is available to everyone.</p>
+<h3>If you have a CRM tool, even more benefits and advantages await you</h3>
+<p>Here are <a href="https://www.efficy.com/benefits-of-crm/">7 other benefits and advantages of a CRM</a>.</p>
+<h2>How does a CRM work?</h2>
+<p>The essence can be summarised in 4 phases:</p>
+<ul>
+<li>Start the sale.</li>
+<li>Close the sale.</li>
+<li>After-sales service.</li>
+<li>Centralise all the information.</li>
+</ul>
+<p>Read more about <a href="https://www.efficy.com/how-does-crm-work/">how does CRM work </a>and about <a href="https://www.efficy.com/phases-of-crm/">the phases of a CRM</a>.</p>
+<h2>Examples and types of CRM</h2>
+<p>There are specialized and other generalists.  <a href="https://www.efficy.com">Efficy</a> is generalist, but super complete and 100% customisable to any company, role and process. It is also a <a href="https://www.efficy.com/easy-crm/">easy CRM</a> so it is even better than the specialised ones, which are not flexible.</p>
+<p>For example CRMs for:</p>
+<ul>
+<li>Real Estate</li>
+<li>Call centre</li>
+<li>Insurance</li>
+<li>Hotels</li>
+<li>Ecommerce</li>
+<li>Hospitals and health</li>
+<li>Banks</li>
+<li>Restaurants</li>
+<li>Marketing</li>
+<li>Sales</li>
+<li>Address</li>
+<li>Customer service</li>
+</ul>
+<p>Read more about <a href="https://www.efficy.com/types-of-crm/">types of CRM.</a></p>
+<h2>So, is it worth having CRM software in my company?</h2>
+<p>Yes.</p>
+<p>The numbers bear this out: according to one study, users of a digital CRM experience a <strong>37% increase in sales, a 45% increase in customer satisfaction and a 43% increase in the ROI</strong> (Return on Investment) of their marketing campaigns.</p>
+<h2>CRM price</h2>
+<p><a href="https://www.efficy.com/free-crm-real-good-idea-or-scam/">Free CRM</a> and <a href="https://www.efficy.com/saas-crm/">SaaS CRM</a> (paid monthly subscription) are available. We recommend hiring a subscription one since the value received for the price is very worthwhile compared to the free one, which in a short time does not cover the needs of your company.</p>
+<h2>Why Efficy CRM</h2>
+<p>A video is worth more than a thousand words:</p>
+<p><div class="rll-youtube-player" data-src="https://www.youtube.com/embed/el74L3sKLuM" data-id="el74L3sKLuM" data-query=""></div><noscript><iframe width="560" height="315" src="https://www.youtube.com/embed/el74L3sKLuM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe></noscript></p>
+<p>We know that every company is a world, and what works for some doesn&#8217;t have to be the best for others.</p>
+<p>In the case of Efficy, for example, we have 19 <a href="https://www.efficy.com/crm-modules/">CRM modules</a>.</p>
+<p>But if you need it, we can also make <strong>a CRM tailored to your company</strong>, thanks to the fact that we are 100% flexible.</p>
+<p>So we make sure <strong>you don&#8217;t spend time and money finding the optimal solution.</strong> Instead, we make it for you.</p>
+<p>The best proof that the system works is that we have over 4,500 customers in more than 33 countries.</p>
+<p>You can start selling more, provide better customer service and achieve smoother internal communication today.<strong></strong></p>
+<p>Are you interested on it?</p>
+<section class="ask-for-demo" style="width: 100%; padding: 4rem 7rem;">
+<p style="margin-bottom: 0; font-size: 2.6rem; line-height: 3.6rem;">Try Efficy CRM<br />
+The most complete CRM</p>
+<p><a href="https://www.efficy.com/request-demo-efficy-crm/" class="btn"><span>TRY NOW FOR FREE</span></a></p>
+</section>
+					<footer>
+						<div class="tag-wrapper">
+																								<span>CRM tool</span>
+																					</div>
+						<div class="gbl-social-share">
+							Share on: <ul class="social__link-list"><li class="linkedin">
+			<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.efficy.com%2Fcrm-meaning%2F&title=CRM Meaning: What is CRM? Definition of CRM and CRM Software.">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="38" viewBox="0 0 40 38.2"><path d="M40 23.4v14.8h-8.6V24.4c0-3.5-1.2-5.8-4.3-5.8 -2.4 0-3.8 1.6-4.4 3.1 -0.2 0.6-0.3 1.3-0.3 2.1v14.4h-8.6c0 0 0.1-23.4 0-25.8h8.6v3.7c0 0 0 0.1-0.1 0.1h0.1v-0.1c1.1-1.8 3.2-4.3 7.7-4.3C35.8 11.8 40 15.5 40 23.4zM4.9 0C1.9 0 0 1.9 0 4.5c0 2.5 1.9 4.5 4.7 4.5h0.1c3 0 4.9-2 4.9-4.5C9.6 1.9 7.8 0 4.9 0zM0.5 38.2h8.6V12.4H0.5V38.2z"/></svg>
+			</a>
+			</li> <li class="twitter">
+			<a target="_blank" href="https://twitter.com/home?status=https%3A%2F%2Fwww.efficy.com%2Fcrm-meaning%2F">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="33" viewBox="0 0 40 32.5"><path d="M40 3.8c-1.5 0.7-3.1 1.1-4.7 1.3 1.7-1 3-2.6 3.6-4.5 -1.6 0.9-3.3 1.6-5.2 2C32.2 1 30 0 27.7 0c-4.5 0-8.2 3.7-8.2 8.2 0 0.7 0.1 1.3 0.2 1.9C12.9 9.7 6.8 6.5 2.8 1.5 2.1 2.7 1.7 4.1 1.7 5.6c0 2.8 1.5 5.4 3.6 6.8 -1.3 0-2.6-0.4-3.7-1 0 0 0 0.1 0 0.1 0 4 2.8 7.3 6.6 8.1 -0.7 0.2-1.4 0.3-2.2 0.3 -0.5 0-1.1 0-1.6-0.1 1.1 3.2 4.1 5.6 7.7 5.7C9.3 27.6 5.8 28.9 2 28.9c-0.7 0-1.3 0-2-0.1 3.6 2.3 7.9 3.7 12.6 3.7 15.1 0 23.3-12.5 23.3-23.3 0-0.4 0-0.7 0-1.1C37.5 7 38.9 5.5 40 3.8z"/></svg>
+			</a>
+			</li><li class="facebook">
+			<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.efficy.com%2Fcrm-meaning%2F">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="40" viewBox="0 0 21.6 40"><path d="M20.8 0l-5.2 0C9.8 0 6 3.9 6 9.8v4.5H0.8c-0.4 0-0.8 0.4-0.8 0.8v6.6c0 0.4 0.4 0.8 0.8 0.8H6v16.6C6 39.6 6.4 40 6.8 40h6.8c0.5 0 0.8-0.4 0.8-0.8V22.6h6.1c0.5 0 0.8-0.4 0.8-0.8l0-6.6c0-0.2-0.1-0.4-0.2-0.6 -0.2-0.2-0.4-0.2-0.6-0.2h-6.1v-3.8c0-1.8 0.4-2.8 2.8-2.8l3.5 0c0.5 0 0.8-0.4 0.8-0.8V0.8C21.6 0.4 21.3 0 20.8 0L20.8 0zM20.8 0"/></svg>
+			</a>
+			</li><li class="mail">
+			<a href="mailto:?&body=https://www.efficy.com/crm-meaning/ ">
+			<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+			<path class="st0" d="M448.9,68H63.1C30.3,68,3.6,94.6,3.6,127.4v257.2C3.6,417.4,30.3,444,63,444h385.9c32.8,0,59.4-26.7,59.4-59.4
+			V127.4C508.4,94.6,481.7,68,448.9,68z M369,256l107.3-107.3v214.7L369,256z M63.1,99.9H449c8.4,0,15.9,3.9,21,9.9l-174,174
+			c-10.6,10.6-24.8,16.4-39.9,16.4s-29.3-5.8-39.9-16.4l-174-174C47.1,103.9,54.6,99.9,63.1,99.9z M143,256L35.6,363.3V148.7L143,256z
+			M448.9,412.1H63.1c-8.4,0-15.9-3.9-21-9.9l123.5-123.5l27.9,27.9c16.6,16.6,38.8,25.8,62.5,25.8s45.9-9.2,62.5-25.8l27.9-27.9
+			l123.5,123.5C464.9,408.1,457.4,412.1,448.9,412.1z"/></svg>
+			</a>
+			</li></ul>						</div>
+					</footer>
+				</div><!-- .entry-content -->
+			</div>
+		</article><!-- #post-46800 -->
+			</div><!-- #content -->
+<section class="more-articles">
+	<h2>Read also</h2>
+	<div class="content">
+		
+	
+<article id="post-60015" class="post-60015 post type-post status-publish has-post-thumbnail hentry category-crm-technology" >
+	<figure class="u-photo">
+		<a data-bg="https://www.efficy.com/wp-content/uploads/2020/11/venta-consultiva.jpg" href="https://www.efficy.com/consultative-selling/" class="u-url bg-img rocket-lazyload" title="Lire cet article sur notre blog" style="">
+					</a>
+	</figure>
+	<header class="entry-header" style="">
+		<div class="category">
+																CRM technology		</div>
+		<h3 class="entry-title">
+			<a href="https://www.efficy.com/consultative-selling/" title="Permalink to Consultative selling helps you sell to large companies" rel="bookmark">Consultative selling helps you sell to large companies</a>
+		</h3>
+
+
+	</header>
+	<div class="content" itemprop="description">
+		<div class="text">Technology is making traditional salespeople disappear. Between 2005 and 2017, US pharmaceutical companies laid off 66% of their salespeople. For self-service and low-cost sales, buyers[...]</div>
+		<a href="https://www.efficy.com/consultative-selling/" class="read-more">Read more</a>
+	</div>
+			</article>
+
+	
+<article id="post-62736" class="post-62736 post type-post status-publish has-post-thumbnail hentry category-crm-technology" >
+	<figure class="u-photo">
+		<a data-bg="https://www.efficy.com/wp-content/uploads/2021/03/que-es-un-crm.jpg" href="https://www.efficy.com/what-is-a-crm/" class="u-url bg-img rocket-lazyload" title="Lire cet article sur notre blog" style="">
+					</a>
+	</figure>
+	<header class="entry-header" style="">
+		<div class="category">
+																CRM technology		</div>
+		<h3 class="entry-title">
+			<a href="https://www.efficy.com/what-is-a-crm/" title="Permalink to CRM : What it is and how to use it for your company" rel="bookmark">CRM : What it is and how to use it for your company</a>
+		</h3>
+
+
+	</header>
+	<div class="content" itemprop="description">
+		<div class="text">Your time is precious. That&#8217;s why you need to be very strategic to know what to do. Above all, it is based &#8220;in the present&#8221;[...]</div>
+		<a href="https://www.efficy.com/what-is-a-crm/" class="read-more">Read more</a>
+	</div>
+			</article>
+
+	
+<article id="post-62930" class="post-62930 post type-post status-publish has-post-thumbnail hentry category-crm-technology" >
+	<figure class="u-photo">
+		<a data-bg="https://www.efficy.com/wp-content/uploads/2019/03/tipos-comunicacion-corporativa.jpg" href="https://www.efficy.com/types-corporate-communication/" class="u-url bg-img rocket-lazyload" title="Lire cet article sur notre blog" style="">
+					</a>
+	</figure>
+	<header class="entry-header" style="">
+		<div class="category">
+																CRM technology		</div>
+		<h3 class="entry-title">
+			<a href="https://www.efficy.com/types-corporate-communication/" title="Permalink to What types of corporate communication are there?" rel="bookmark">What types of corporate communication are there?</a>
+		</h3>
+
+
+	</header>
+	<div class="content" itemprop="description">
+		<div class="text">There are many different types of corporate communication. With the tagline &#8220;communication&#8221; there have been many terms that have tried to capture this reality of[...]</div>
+		<a href="https://www.efficy.com/types-corporate-communication/" class="read-more">Read more</a>
+	</div>
+			</article>
+	</div>
+	<div class="more">
+		<a class="btn" href="#"><span>Read more</span></a>
+	</div>
+</section>
+
+<aside>
+	<div id="nav_menu-6" class="widget widget_nav_menu"><h3 class="widget-title">Follow us on</h3><div class="menu-social-en-container"><ul id="menu-social-en" class="menu"><li id="menu-item-8500" class="linkedin menu-item menu-item-type-custom menu-item-object-custom menu-item-8500"><a rel="nofollow" href="https://www.linkedin.com/company/efficy/">linkedin</a></li>
+<li id="menu-item-8501" class="twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-8501"><a rel="nofollow" href="https://twitter.com/efficy_en">twitter</a></li>
+<li id="menu-item-8502" class="facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-8502"><a rel="nofollow" href="https://www.facebook.com/efficy/">facebook</a></li>
+<li id="menu-item-8499" class="youtube menu-item menu-item-type-custom menu-item-object-custom menu-item-8499"><a rel="nofollow" href="https://www.youtube.com/user/EfficyCRM">youtube</a></li>
+</ul></div></div><div id="eff_newsletter-5" class="widget widget_eff_newsletter"><div id="mc_embed_signup">
+	<p class="gbl-h6" id="newsletter">Get our newsletter by email</p>
+
+<iframe loading="lazy" width="100%" height="100%" src="about:blank" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://webform.efficy.com/public/guest?app=webform&#038;page=pages/miniform.htm&#038;entity=newsletter&#038;lang=en"></iframe><noscript><iframe width="100%" height="100%" src="https://webform.efficy.com/public/guest?app=webform&page=pages/miniform.htm&entity=newsletter&lang=en"></iframe></noscript>
+
+
+</div>
+
+</div>
+</aside><!-- #secondary .widget-area -->
+
+</main>
+<footer id="footer-main">
+	<div id="colophon" role="contentinfo">
+		<div class="wrapper-credit">
+										<p class="credit">© Copyright 2021 efficy - All rights reserved</p>
+						<nav class="gdpr-menu" role="navigation">
+				<div class="menu-gdpr-menu-container"><ul id="menu-gdpr-menu" class="menu"><li id="menu-item-6" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a href="https://www.efficy.com/terms-and-conditions/">Terms of use</a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="https://www.efficy.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="https://www.efficy.com/cookie-policy/">Cookie Policy</a></li>
+<li id="menu-item-63437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63437"><a href="https://www.efficy.com/general-terms-and-conditions-of-sale/">Terms of Sale</a></li>
+<li id="menu-item-49246" class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-49246"><a href="https://www.efficy.com/crm-meaning/" aria-current="page">CRM Meaning</a></li>
+</ul></div>			</nav>
+      <div class="languages-nav">
+				<ul class="languages"><li class='active-language'><span class="icl_lang_sel_current icl_lang_sel_native">English</span></li><li><ul><li class="item "><a href="https://www.efficy.com/fr/crm-definition/"><span class="icl_lang_sel_current icl_lang_sel_native">Français</span></a></li><li class="item "><a href="https://www.efficy.com/be-fr/crm-definition/"><span class="icl_lang_sel_current icl_lang_sel_native">Français Belgique</span></a></li><li class="item "><a href="https://www.efficy.com/be-nl/crm-betekenis/"><span class="icl_lang_sel_current icl_lang_sel_native">Nederlands Belgie</span></a></li><li class="item "><a href="https://www.efficy.com/nl/crm-betekenis/"><span class="icl_lang_sel_current icl_lang_sel_native">Nederlands</span></a></li><li class="item last"><a href="https://www.efficy.com/ch-fr/crm-definition/"><span class="icl_lang_sel_current icl_lang_sel_native">Français Suisse</span></a></li></ul></li></ul>			</div>
+		</div>
+		<p class="copyright">
+			<a target="_blank" rel="nofollow" href="http://www.globulebleu.com" title="Visiter le site de globulebleu">Réalisé par Globule Bleu</a>
+		</p>
+	</div>
+</footer><!-- footer-main -->
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js" ></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js" ></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/placeholders/2.1.0/placeholders.js" ></script>
+<![endif]-->
+
+<!--googleoff: index-->
+    			<div class="cookies-law-info hidden">
+    				<div class="cookies-wrapper">
+    					<div class="cookies-content"><p><strong>We use cookies to make your visit to this website even more enjoyable.</strong></p>
+<p>When browsing our website, you accept our cookies.</p>
+</div>
+    					<div class="cookies-buttons">
+    						<button type="button" class="agree-button"><span>OK, Continue</span></button>
+    						<a href="https://www.efficy.com/cookie-policy/" class="find-more-button"><span>Read more about cookies</span></a>
+    					</div>
+    				</div>
+    		</div><!--googleon: index--><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: ES - Exit intent - 1 --><script type="rocketlazyloadscript">(function(d){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.campaign='irzli6zx1yk34mr3iniy';s.dataset.user='74379';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script><!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: ES - Demo - Cedric --><script type="rocketlazyloadscript">(function(d){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.campaign='vqodbzpjpv2wwuz7mwv4';s.dataset.user='74379';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script><!-- / OptinMonster --><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: ES - Demo - Alfredo --><script type="rocketlazyloadscript">(function(d){var s=d.createElement('script');s.type='text/javascript';s.src='https://a.omappapi.com/app/js/api.min.js';s.async=true;s.dataset.campaign='crtbdpkmgenn8hb55vwf';s.dataset.user='74379';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script><!-- / OptinMonster -->		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+		var irzli6zx1yk34mr3iniy_shortcode = true;var vqodbzpjpv2wwuz7mwv4_shortcode = true;var crtbdpkmgenn8hb55vwf_shortcode = true;		</script>
+		<script data-minify="1" type='text/javascript' src='https://www.efficy.com/wp-content/cache/min/1/wp-content/themes/gbl-toolbox/js/modernizr-custom.js?ver=1627389757' id='modernizr-js' defer></script>
+<script type='text/javascript' src='https://www.efficy.com/wp-content/themes/gbl-toolbox/js/owl.carousel.min.js' id='gbl-owl-js' defer></script>
+<script data-minify="1" type='text/javascript' src='https://www.efficy.com/wp-content/cache/min/1/wp-content/themes/gbl-toolbox/js/bootstrap3/transition.js?ver=1627389757' id='bootstrapTransition-js' defer></script>
+<script data-minify="1" type='text/javascript' src='https://www.efficy.com/wp-content/cache/min/1/wp-content/themes/gbl-toolbox/js/bootstrap3/tab.js?ver=1627389757' id='bootstrapTabs-js' defer></script>
+<script data-minify="1" type='text/javascript' src='https://www.efficy.com/wp-content/cache/min/1/wp-content/themes/gbl-toolbox/js/jquery-match-height.js?ver=1627389757' id='matchHeight-js' defer></script>
+<script type='text/javascript' id='gbl-toolbox-js-extra'>
+/* <![CDATA[ */
+var frontendajax = {"ajaxurl":"https:\/\/www.efficy.com\/wp-admin\/admin-ajax.php","loader":"https:\/\/www.efficy.com\/wp-content\/themes\/gbl-toolbox\/img\/gif\/octopus.gif"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.efficy.com/wp-content/themes/gbl-toolbox/js/main.min.js' id='gbl-toolbox-js' defer></script>
+<script type="rocketlazyloadscript">(function(d){var s=d.createElement("script");s.type="text/javascript";s.src="https://a.omappapi.com/app/js/api.min.js";s.async=true;s.id="omapi-script";d.getElementsByTagName("head")[0].appendChild(s);})(document);</script><script type='text/javascript' src='https://www.efficy.com/wp-includes/js/wp-embed.min.js?ver=5.7.2' id='wp-embed-js' defer></script>
+<script type='text/javascript' id='cookie-agreed-js-extra'>
+/* <![CDATA[ */
+var cookie = {"validity":"360"};
+/* ]]> */
+</script>
+<script data-minify="1" type='text/javascript' src='https://www.efficy.com/wp-content/cache/min/1/wp-content/plugins/gbl-gdpr/js/cookies_disclaimer.js?ver=1627389757' id='cookie-agreed-js' defer></script>
+<script data-minify="1" type='text/javascript' src='https://www.efficy.com/wp-content/cache/min/1/wp-content/plugins/optinmonster/assets/js/helper.js?ver=1627389757' id='optinmonster-wp-helper-js' defer></script>
+		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_localized = { ajax: 'https://www.efficy.com/wp-admin/admin-ajax.php?optin-monster-ajax-route=1', nonce: '5a414ba843', slugs: {"irzli6zx1yk34mr3iniy":{"slug":"irzli6zx1yk34mr3iniy","mailpoet":false},"vqodbzpjpv2wwuz7mwv4":{"slug":"vqodbzpjpv2wwuz7mwv4","mailpoet":false},"crtbdpkmgenn8hb55vwf":{"slug":"crtbdpkmgenn8hb55vwf","mailpoet":false}} };</script>
+				<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"wc_cart":[],"object_id":46800,"object_key":"post","object_type":"post","term_ids":[265,378]};</script>
+		<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.efficy.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<div class="play"></div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script><div class="modal">
+	<div class="modal-content">
+		<button class="close">X</button>
+	</div>
+</div>
+<style type="text/css">
+	#menu-gdpr-menu, .languages {padding-bottom:0px!important}
+
+ul, ol {padding-bottom:20px!important}
+
+@media screen and (max-width: 590px) {
+  .two-columns-post {width:100%!important;}
+}
+
+#products-comparator .comparator-products > ul > li {width: 16rem;}
+
+div.contact, div.locality {margin-top:1rem!important;}
+li.zoomMap {margin-top:2rem!important;}
+div.contact a {font-size: 1.2rem;}
+
+
+.product-option {font-size: 15px; padding-top: 15px;color:#35a0b7;}
+
+@media (min-width: 1200px) {
+.section-html.section-products article { width:25%!important; } }
+
+
+.inner-nav ul li:before, .parent-flex ul li:before, .wrapper-picto ul li:before, .list-pictures li:before, .parent-flex li:before, .comparator-labels ul li:before, .ul-list-link li:before, .ul-list-post li:before, .zoomMap:before, div.help ul li:before  {
+display:none!important;
+}
+
+
+h3.list {
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    color: #4ca928;
+    font-size: 1.8rem!important;
+    line-height: 2.4rem;
+}
+@media (max-width: 1440px){
+h3.list {
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    color: #4ca928;
+    font-size: 1.8rem!important;
+    line-height: 2.4rem;}
+}
+
+.ask-for-demo {padding: 4rem 6rem;} 
+@media (max-width: 1160px) {.ask-for-demo {padding: 4rem 2rem;} 
+
+.language-banner .wrapper {justify-content: normal;}
+
+.language-banner .wrapper .text {margin-right:2rem;}
+
+.widget_eff_newsletter #mc_embed_signup iframe {height:440px;}
+
+@media (min-width: 1200px) {
+section.wrapper-whitepaper iframe, section.whitepaper iframe {height:440px;}
+.wrapper-whitepaper .whitepaper{padding:9rem 9rem 9rem 12rem}
+}
+section.footer-big .col-right #mc_embed_signup iframe {height:440px;}
+
+#products-comparator .comparator-products header h2 {font-size: 2rem;font-weight: normal;}
+
+@media screen and (max-width: 800px) {
+  #tablewebinar tbody tr td{font-size:1rem!important;padding:0.5rem}
+  #tablewebinar tbody tr td a.btn span {font-size:1rem!important;padding:0rem}
+  #tablewebinar tbody tr td a.btn {padding:0.5rem 1rem!important;}
+  .webinardescription {display:none;}
+  #tablewebinar tbody tr th{font-size:1rem!important;padding:0.5rem}
+}
+
+@media screen and (max-width: 1070px) {
+  .cities {width:20%!important;}
+  .text-cities  {font-size:14px!important;}
+  .third-city {width:20%!important;}
+  .four-cities{padding-bottom:30rem;}
+}
+@media screen and (max-width: 800px) {
+  .title {text-align:center;}
+  .form-crm-day {height: 75rem!important;}
+}
+@media screen and (max-width: 590px) {
+  .cities {width:35%!important;}
+  .text-cities {font-size:14px!important;}
+  .third-city {margin-left: 5rem!important;width:35%!important;}
+  .four-cities{padding-bottom:65rem!important;}
+}
+@media screen and (max-width: 340px) {
+  .cities {width:30%!important;}
+  .text-cities {font-size:10px!important;}
+  .third-city {margin-left: 5rem!important;width:30%!important;}
+
+}
+
+.speaker{text-align: left; width: 130px;border-width: 0px !important; color:#35a0b7;font-size: 16px;font-family: Arial;}
+.conference {text-align: left;border-width: 0px !important;font-family: Arial;font-size: 16px;width: 60%;}
+.time{border-width: 0px !important;text-align: left;}
+
+li {
+    list-style-position: inside;
+}
+p {
+text-align:justify;
+}
+
+.whitepaper {
+/*padding: 9rem 12rem;
+margin-bottom: 28rem;
+margin-left: 9rem;*/
+width: 40%;
+float: right;
+}
+.cards-download article {
+    width: auto;
+    float: left;
+}</style>
+
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1629127369 -->
