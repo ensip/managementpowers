@@ -60,7 +60,7 @@ if (isset($_GET['ref'])) {
 
 <script type='text/javascript' src='./js/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
 <script type='text/javascript' src='./js/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
-<link rel="canonical" href="https://www.managementpowers.com/index.html" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+<link rel="canonical" href="https://www.managementpowers.com/" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
 
 </head>
 

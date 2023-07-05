@@ -66,7 +66,7 @@ if (isset($_REQUEST['purchase'])) {
 
 <script type='text/javascript' src='./js/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
 <script type='text/javascript' src='./js/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
-<link rel="canonical" href="https://www.managementpowers.com/index.html" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+<link rel="canonical" href="https://www.managementpowers.com/" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
 <style type="text/css">
 #menu-gdpr-menu, .languages {padding-bottom:0px!important}
 
@@ -197,7 +197,7 @@ input {
 				<div class="header-inner">
 					<div id="branding">
 						<strong>
-								<a href="index.html" title="Management Powers" rel="home">
+								<a href="" title="Management Powers" rel="home">
 									Management Powers - 								</a>
 						</strong>
 					</div>
@@ -210,14 +210,14 @@ input {
 					<nav id="access" role="navigation">
 							<div class="menu-main-en-container"><ul id="menu-main-en" class="menu">
 							<li id="menu-item-8921" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8921"><a href="./departments.html">Roles &#038; Industries</a></li>
-							<li id="menu-item-8923" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8589 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-8923"><a href="./index.html" aria-current="page">Price</a></li>
+							<li id="menu-item-8923" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8589 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-8923"><a href="./" aria-current="page">Price</a></li>
 							<li id="menu-item-40016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-40016"><a href="./features.html">Features</a></li>
 							<li id="menu-item-18250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-18250"><a href="./about-us.html">About us</a></li>
 							<li id="menu-item-25374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25374"><a href="./resources.html">Resources</a></li>
 							<li id="menu-item-40011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40011"><a href="./contact.html">Contact</a></li>
 						</ul></div>			
 					</nav><!-- #access -->
-					<a href="#" class="btn"><span>TRY IT FREE</span></a>
+					<a href="#" class="btn"><span>TRY IT</span></a>
 
 						<div class="search-form-wrapper fade">
 	<div class="close">X</div>
@@ -237,7 +237,7 @@ input {
 					</div>
 				</div>
 				<div class="breadcrump">
-					<a href="./index.html">Home</a>  <span>Our range of CRM solutions</span>				
+					<a href="./">Home</a>  <span>Our range of CRM solutions</span>				
 				</div>
 					</div>
 	</header><!-- #header-main -->
@@ -427,7 +427,7 @@ advanced Marketing</p>
 	<section class="footer-big">
 			<section class="ask-for-demo">
 		<p>Get a free demo</p>
-		<a href="./index.html" class="btn"><span>Yes, I want a demo</span></a>
+		<a href="./" class="btn"><span>Yes, I want a demo</span></a>
 	</section>
 </section>
 <footer id="footer-main">
